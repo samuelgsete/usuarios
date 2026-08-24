@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
+        <title>Usuários cadastrados</title>
+    </head>
+    <body onload="carregarUsuarios()">
+
+        <h1>Usuários cadastrados</h1>
+
+        <table align="center" border="1" cellpadding="5">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th>Senha</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="usuarios">
+                <tr>
+                    <td align="center" colspan="4">Carregando...</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <script>
+            async function carregarUsuarios() {
+                const resposta = await fetch('https://6a888a047b483fa21fe91ad4.mockapi.io/usuarios');
+                const usuarios = await resposta.json();
+                const html = usuarios.map(usuario => {
+                    return `
+                        <tr>
+                            <td align="center">${usuario.nome}</td>
+                            <td align="center">${usuario.email}</td>
+                            <td align="center">${usuario.senha}</td>
+                            <td align="center">
+                                <button type="button" onclick="excluir('${usuario.id}')">
+                                    <span class="icon material-symbols-outlined">delete</span>
+                                </button>
+                            </td>
+                        </tr>
+                    `;
+                }).join("") 
+                || 
+                '<tr><td align="center" colspan="4">Nenhum usuário cadastrado</td></tr>';
+                
+                document.getElementById('usuarios').innerHTML = html;
+            }
+
+            async function excluir(id) {
+                if(confirm('Tem certeza que deseja excluir?')) {
+                    await fetch(`https://6a888a047b483fa21fe91ad4.mockapi.io/usuarios/${id}`, {
+                        method: 'DELETE',
+                        headers: { 'Content-Type': 'application/json' }
+                    });
+                    carregarUsuarios()
+                }
+            }
+        </script>
+        
+    </body>
+</html>

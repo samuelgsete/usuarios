@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Inscreva-se</title>
+    </head>
+    <body>
+
+        <h1>Inscreva-se gratuitamente</h1>
+        <p><a href="https://samuelgsete.github.io/usuarios" target="_blank">Ver inscrições</a></p>
+        
+        <form method="POST" action="https://6ac4dff954a61668c5f67a12.mockapi.io/usuarios">
+
+            <!-- Construa o formulário a partir daqui -->
+
+        </form>
+    </body>
+</html>

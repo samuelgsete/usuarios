@@ -8,36 +8,40 @@
     </head>
     <body onload="carregarUsuarios()">
 
-        <h1>Usuários cadastrados</h1>
+        <h1 style="text-align: center;">Usuários cadastrados</h1>
 
         <table align="center" border="1" cellpadding="5">
             <thead>
                 <tr>
                     <th>Nome</th>
+                    <th>Idade</th>
+                    <th>Raça</th>
+                    <th>Estado Civil</th>
                     <th>E-mail</th>
                     <th>Senha</th>
-                    <th>Idade</th>
                     <th>Ações</th>
                 </tr>
             </thead>
             <tbody id="usuarios">
                 <tr>
-                    <td align="center" colspan="4">Carregando...</td>
+                    <td align="center" colspan="7">Carregando...</td>
                 </tr>
             </tbody>
         </table>
 
         <script>
             async function carregarUsuarios() {
-                const resposta = await fetch('https://6a888a047b483fa21fe91ad4.mockapi.io/usuarios');
+                const resposta = await fetch('https://6ac4dff954a61668c5f67a12.mockapi.io/usuarios');
                 const usuarios = await resposta.json();
                 const html = usuarios.map(usuario => {
                     return `
                         <tr>
                             <td align="center">${usuario.nome}</td>
+                            <td align="center">${usuario.idade} anos</td>
+                            <td align="center">${usuario.raca}</td>
+                            <td align="center">${usuario.estado_civil}</td>
                             <td align="center">${usuario.email}</td>
                             <td align="center">${usuario.senha}</td>
-                            <td align="center">${usuario.idade} anos</td>
                             <td align="center">
                                 <button type="button" onclick="excluir('${usuario.id}')">
                                     <span class="icon material-symbols-outlined">delete</span>
@@ -54,11 +58,12 @@
 
             async function excluir(id) {
                 if(confirm('Tem certeza que deseja excluir?')) {
-                    await fetch(`https://6a888a047b483fa21fe91ad4.mockapi.io/usuarios/${id}`, {
+                    const conf = {
                         method: 'DELETE',
                         headers: { 'Content-Type': 'application/json' }
-                    });
-                    carregarUsuarios()
+                    }
+                    await fetch(`https://6ac4dff954a61668c5f67a12.mockapi.io/usuarios/${id}`, conf);
+                    carregarUsuarios();
                 }
             }
         </script>

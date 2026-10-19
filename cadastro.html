@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Inscreva-se</title>
+    </head>
+    <body>
+
+        <h1>Inscreva-se gratuitamente</h1>
+        <p><a href="https://samuelgsete.github.io/usuarios" target="_blank">Ver inscrições</a></p>
+        
+        <form name="cadastro" method="POST" action="https://6ac4dff954a61668c5f67a12.mockapi.io/usuarios">
+
+            <fieldset>
+                <legend>Dados pessoais</legend>
+
+                <div>
+                    <label for="nome">Nome:</label>
+                    <input id="nome" name="nome" type="text" minlength="2" maxlength="50" placeholder="Ex: Mayara Bezerra" required>
+                </div>
+
+                <br>
+
+                <div>
+                    <label for="idade">Idade:</label>
+                    <input id="idade" name="idade" type="number" min="18" required>
+                </div>
+
+                <br>
+
+                <div>
+                    <label for="estado_civil">Estado Civil:</label>
+                    <select id="estado_civil" name="estado_civil">
+                        <option value="">selecione...</option>
+                        <option value="Solteiro(a)">Solteiro(a)</option>
+                        <option value="Casado(a)">Casado(a)</option>
+                        <option value="Divorciado(a)">Divorciado(a)</option>
+                        <option value="Viúvo(a)">Viúvo(a)</option>
+                    </select>
+                </div>
+
+                <br>
+
+                <div>
+                    <label for="whatsapp">WhatsApp (opcional):</label>
+                    <input id="whatsapp" type="text" placeholder="(00)00000-0000" pattern="\(\d{2}\)\d{5}-\d{4}" name="whatsapp">
+                </div>
+
+            </fieldset>
+
+            <br>
+
+            <fieldset>
+                <legend>Como você se autodeclara?</legend>
+
+                <div>
+                    <input id="preto" type="radio" name="raca" value="Preto">
+                    <label for="preto">Preto</label>
+                </div>
+
+                <div>
+                    <input id="pardo" type="radio" name="raca" value="Pardo">
+                    <label for="pardo">Pardo</label>
+                </div>
+
+                <div>
+                    <input id="indigena" type="radio" name="raca" value="Indígena">
+                    <label for="indigena">Indígena</label>
+                </div>
+
+                <div>
+                    <input id="amarelo" type="radio" name="raca" value="Amarelo">
+                    <label for="amarelo">Amarelo</label>
+                </div>
+
+                <div>
+                    <input id="branco" type="radio" name="raca" value="Branco">
+                    <label for="branco">Branco</label>
+                </div>
+
+                <div>
+                    <input id="nao_declarado" type="radio" name="raca" value="Não declarado">
+                    <label for="nao_declarado">Prefiro não declarar</label>
+                </div>
+
+            </fieldset>
+
+            <br>
+
+            <fieldset>
+                <legend>Credenciais de acesso</legend>
+
+                <div>
+                    <label for="email">E-mail:</label>
+                    <input id="email" name="email" type="email" placeholder="tiago@email.com" maxlength="100" required>
+                </div>
+
+                <br>
+
+                <div>
+                    <label for="senha">Senha:</label>
+                    <input id="senha" name="senha" type="password" minlength="4" maxlength="8" required>
+                </div>
+
+            </fieldset>
+
+            <br>
+
+            <button type="submit">Quero me inscrever</button>
+            <button type="reset">Recomeçar</button>
+
+        </form>
+    </body>
+</html>

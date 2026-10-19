@@ -17,6 +17,7 @@
                     <th>Idade</th>
                     <th>Raça</th>
                     <th>Estado Civil</th>
+                    <th>WhatsApp</th>
                     <th>E-mail</th>
                     <th>Senha</th>
                     <th>Ações</th>
@@ -24,7 +25,7 @@
             </thead>
             <tbody id="usuarios">
                 <tr>
-                    <td align="center" colspan="7">Carregando...</td>
+                    <td align="center" colspan="8">Carregando...</td>
                 </tr>
             </tbody>
         </table>
@@ -40,6 +41,7 @@
                             <td align="center">${usuario.idade} anos</td>
                             <td align="center">${usuario.raca}</td>
                             <td align="center">${usuario.estado_civil}</td>
+                            <td align="center">${usuario.whatsapp || 'Não informado'}</td>
                             <td align="center">${usuario.email}</td>
                             <td align="center">${usuario.senha}</td>
                             <td align="center">
@@ -51,7 +53,7 @@
                     `;
                 }).join("") 
                 || 
-                '<tr><td align="center" colspan="7">Nenhum usuário inscrito</td></tr>';
+                '<tr><td align="center" colspan="8">Nenhum usuário inscrito</td></tr>';
                 
                 document.getElementById('usuarios').innerHTML = html;
             }
